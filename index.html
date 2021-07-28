@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Sandbox</title>
+  <style>
+    #first { color: red;}
+    #second { color: green;}
+  </style>
+</head>
+<body>
+  <ul id="first"></ul>
+
+  <script>
+    function addMessage(element, message) {
+      const messageElement = document.createElement("li");
+      messageElement.textContent = message;
+      element.appendChild(messageElement);
+    }
+
+    const first = document.getElementById('first');
+    addMessage(first, 'Page Loading');
+  </script>
+
+  <ul id="second"></ul>
+
+  <script>
+    document.body.addEventListener('mousemove', function() {
+      const second = document.getElementById('second');
+      addMessage(second, 'Event: mousemove');
+    });
+
+    document.body.addEventListener('click', function() {
+      const second = document.getElementById('second');
+      addMessage(second, 'Event: Click');
+    });
+  </script>
+</body>
+</html>
